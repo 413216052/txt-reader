@@ -3,9 +3,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const fs = require('fs')
 const path = require('path')
+const compression = require('compression')
 
 const app = express()
 
+// gzip
+app.use(compression());
 // CORS & Preflight request
 app.use((req, res, next) => {
     if (req.path !== '/' && !req.path.includes('.')) {
